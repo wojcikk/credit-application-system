@@ -1,0 +1,48 @@
+package logic.scoring;
+
+import logic.data.DataCollection;
+
+public class PersonalPoints {
+    private final DataCollection dataCollection;
+
+    public PersonalPoints(DataCollection dataCollection) {
+        this.dataCollection = dataCollection;
+    }
+
+    public int getPersonalPoints() {
+        int points = 0;
+
+        points += getMartialStatusPoints();
+        points += getEducationPoints();
+
+        return points;
+    }
+
+    private int getMartialStatusPoints() {
+        if(dataCollection.getPersonalData().getMartialStatus().toLowerCase().equals("seperated"))
+            return 100;
+        else if(dataCollection.getPersonalData().getMartialStatus().toLowerCase().equals("married"))
+            return 200;
+        else
+            return 0;
+    }
+
+    private int getEducationPoints() {
+        if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("primary"))
+            return -150;
+        else if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("middle"))
+            return -100;
+        else if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("secondary"))
+            return -50;
+        else if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("post secondary"))
+            return 0;
+        else if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("tertiary"))
+            return 100;
+        else if(dataCollection.getPersonalData().getEducation().toLowerCase().equals("none"))
+            return -200;
+        else
+            return -1;
+    }
+
+
+}
