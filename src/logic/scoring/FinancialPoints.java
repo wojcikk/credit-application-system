@@ -15,9 +15,11 @@ public class FinancialPoints {
 
         points += getTypeOfIncomePoints();
         points += getAnnualIncomePoints();
-        points += getPropertiesValuePoints();
+        if(!dataCollection.getFinancialData().getPropertiesValue().equals("null"))
+            points += getPropertiesValuePoints();
         points += getSourceOfIncomePoints();
-        points += getDebtPoints();
+        if(!dataCollection.getFinancialData().getDebt().equals("null"))
+            points += getDebtPoints();
 
         return points;
     }
@@ -28,7 +30,7 @@ public class FinancialPoints {
             return 50;
         else if(dataCollection.getFinancialData().getTypeOfContract().toLowerCase().equals("employment contract"))
             return 100;
-        else if(dataCollection.getFinancialData().getTypeOfContract().toLowerCase().equals("comission contract"))
+        else if(dataCollection.getFinancialData().getTypeOfContract().toLowerCase().equals("commission contract"))
             return -100;
         else if(dataCollection.getFinancialData().getTypeOfContract().toLowerCase().equals("specific-task contract"))
             return -50;

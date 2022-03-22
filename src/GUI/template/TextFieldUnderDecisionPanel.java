@@ -1,36 +1,36 @@
-package GUI.financialDataPage.panels;
+package GUI.template;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class RealEstateOwnedPanel {
+public class TextFieldUnderDecisionPanel {
 
-    public JPanel createRealEstateOwnedPanel(JPanel propertyDetailsPanel, ButtonGroup group) {
+    public JPanel createPanel(int leftMargin, String labelText, String questionLabel, JPanel propertyDetailsPanel, ButtonGroup group) {
         JPanel panel = new JPanel();
         panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 
         panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
 
-        JLabel nameLabel = new JLabel("REAL ESTATE OWNED");
+        JLabel label = new JLabel(labelText);
         JPanel select = new JPanel();
 
         select.setLayout(new BoxLayout(select, BoxLayout.X_AXIS));
 
-        nameLabel.setPreferredSize(new Dimension(200, 20));
-        nameLabel.setMaximumSize(new Dimension(200, 20));
+        label.setPreferredSize(new Dimension(200, 20));
+        label.setMaximumSize(new Dimension(200, 20));
         select.setMaximumSize(new Dimension(100000, 100));
 
-        nameLabel.setBorder(BorderFactory.createEmptyBorder(5, 35, 0, 0));
+        label.setBorder(BorderFactory.createEmptyBorder(5, leftMargin, 0, 0));
 
         select.setBackground(new Color(250, 250, 250));
         select.setBorder(BorderFactory.createEmptyBorder(5, 0, 0, 0));
 
-        nameLabel.setFont(new Font("Consolas", Font.PLAIN, 14));
-        nameLabel.setForeground(Color.DARK_GRAY);
+        label.setFont(new Font("Consolas", Font.PLAIN, 14));
+        label.setForeground(Color.DARK_GRAY);
 
-        JLabel text = new JLabel("Do you own any property?");
+        JLabel text = new JLabel(questionLabel);
         JRadioButton yes = new JRadioButton("YES");
         JRadioButton no = new JRadioButton("NO");
 
@@ -78,7 +78,7 @@ public class RealEstateOwnedPanel {
         select.add(no);
         select.add(Box.createHorizontalGlue());
 
-        panel.add(nameLabel);
+        panel.add(label);
         panel.add(select);
 
         return panel;

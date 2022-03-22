@@ -97,16 +97,22 @@ public class Errors {
             if(box.get(i).isSelected())
                 selected = true;
 
-        if(selected == false)
+        if(selected == false) {
             panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            setFlag(false);
+        }
 
     }
 
     private void checkButtonGroup(JPanel panel, ButtonGroup buttonGroup) {
         ArrayList<AbstractButton> buttons = Collections.list(buttonGroup.getElements());
         panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        if(!buttons.get(0).isSelected() && !buttons.get(1).isSelected())
+        if(buttons.get(1).isSelected()) {
+            setFlag(true);
+        } else if(!buttons.get(0).isSelected() && !buttons.get(1).isSelected()) {
             panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
+            setFlag(false);
+        }
     }
 
     private void checkUnderButtonTextField(String text, JPanel panel, JTextField textField, ButtonGroup buttonGroup) {

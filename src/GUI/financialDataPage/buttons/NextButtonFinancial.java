@@ -9,6 +9,8 @@ import logic.data.PersonalData;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class NextButtonFinancial {
 
@@ -41,6 +43,9 @@ public class NextButtonFinancial {
                         mainPanelFinancial.getDebtDetailsPanel(), mainPanelFinancial.getValueOfDebt()
 
                 );
+
+                if(Collections.list(mainPanelFinancial.getPropertyGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfProperties().setText("null");
+                if(Collections.list(mainPanelFinancial.getDebtGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfDebt().setText("null");
 
                 if(flag) {
                     FinancialData financialData = new FinancialData(mainPanelFinancial.getTypesBox().getSelectedItem().toString(),

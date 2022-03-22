@@ -7,6 +7,9 @@ public class ScoringSystem {
     private final PersonalPoints personalPoints;
     private final FinancialPoints financialPoints;
     private final CreditTermsPoints creditTermsPoints;
+    private final int personalScore;
+    private final int financialScore;
+    private final int creditTermsScore;
     private int score;
 
     public ScoringSystem(DataCollection dataCollection) {
@@ -14,24 +17,22 @@ public class ScoringSystem {
         this.personalPoints = new PersonalPoints(dataCollection);
         this.financialPoints = new FinancialPoints(dataCollection);
         this.creditTermsPoints = new CreditTermsPoints(dataCollection);
+        this.personalScore = personalPoints.getPersonalPoints();
+        this.financialScore = financialPoints.getFinancialPoints();
+        this.creditTermsScore = creditTermsPoints.getCreditTermsPoints();
     }
 
     public int getScore() {
-        PersonalPoints personalPoints = new PersonalPoints(dataCollection);
-        FinancialPoints financialPoints = new FinancialPoints(dataCollection);
-        CreditTermsPoints creditTermsPoints = new CreditTermsPoints(dataCollection);
-
-        int personalScore = personalPoints.getPersonalPoints();
-        int financialScore = financialPoints.getFinancialPoints();
-        int creditTermsScore = creditTermsPoints.getCreditTermsPoints();
-
         this.score = personalScore + financialScore + creditTermsScore;
 
-        System.out.println("Personal points: " + personalScore + "/300");
-        System.out.println("Financial points: " + financialScore + "/1400");
-        System.out.println("Credit terms points: " + creditTermsScore + "/300");
-
         return score;
+    }
+
+    public void printScore() {
+        System.out.println("Total points: " + score);
+        System.out.println("Personal points: " + personalScore);
+        System.out.println("Financial points: " + financialScore);
+        System.out.println("Credit terms points: " + creditTermsScore);
     }
 
 

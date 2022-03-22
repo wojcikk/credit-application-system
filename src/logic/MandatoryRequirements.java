@@ -14,7 +14,7 @@ public class MandatoryRequirements {
     private void check() {
         setFlag(true);
         comparisonOfIncomeAndExpenses();
-        if(isFlag()) comparisonOfProfitAndDebt();
+        if(isFlag() && !dataCollection.getFinancialData().getDebt().equals("null")) comparisonOfProfitAndDebt();
         if(isFlag()) ageVerification();
     }
 
@@ -29,9 +29,8 @@ public class MandatoryRequirements {
     }
 
     private void ageVerification() {
-        if(Integer.parseInt(java.time.LocalDate.now().toString().substring(0,4)) - Integer.parseInt(dataCollection.getPersonalData().getYearOfBirth()) < 18)
+        if(java.time.LocalDate.now().getYear() - Integer.parseInt(dataCollection.getPersonalData().getYearOfBirth()) < 18)
             setFlag(false);
-
     }
 
     public boolean isFlag() {

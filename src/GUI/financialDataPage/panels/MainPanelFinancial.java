@@ -6,6 +6,7 @@ import GUI.financialDataPage.buttons.PreviousButtonFinancial;
 import GUI.financialDataPage.dataArrays.ArrayOfTypes;
 import GUI.template.ComboBoxPanel;
 import GUI.template.TextFieldPanel;
+import GUI.template.TextFieldUnderDecisionPanel;
 import logic.data.ContactData;
 import logic.data.PersonalData;
 
@@ -54,14 +55,11 @@ public class MainPanelFinancial {
 
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
+        TextFieldUnderDecisionPanel textFieldUnderDecisionClass = new TextFieldUnderDecisionPanel();
 
         TitlePanelFinancial titlePanelFinancialClass = new TitlePanelFinancial();
 
-        RealEstateOwnedPanel realEstateOwnedPanelClass = new RealEstateOwnedPanel();
-        PropertyDetailsPanel propertyDetailsPanelClass = new PropertyDetailsPanel(valueOfProperties);
         SourceOfIncomePanel sourceOfIncomePanelClass = new SourceOfIncomePanel();
-        CurrentDebtPanel currentDebtPanelClass = new CurrentDebtPanel();
-        DebtDetailsPanel debtDetailsPanelClass = new DebtDetailsPanel(valueOfDebt);
 
         PreviousButtonFinancial previousButtonClass = new PreviousButtonFinancial();
         NextButtonFinancial nextButtonClass = new NextButtonFinancial();
@@ -75,11 +73,13 @@ public class MainPanelFinancial {
         typeOfIncomePanel = comboBoxClass.createPanel(45, "TYPE OF INCOME", typesBox);
         annualIncomePanel = textFieldClass.createPanel(55, "ANNUAL INCOME", "Enter income", annualIncome);
         annualExpensesPanel = textFieldClass.createPanel(45, "ANNUAL EXPENSES", "Enter expenses", annualExpenses);
-        propertyDetailsPanel = propertyDetailsPanelClass.createPropertyDetailsPanel();
-        realEstateOwnedPanel = realEstateOwnedPanelClass.createRealEstateOwnedPanel(propertyDetailsPanel, propertyGroup);
+        propertyDetailsPanel = textFieldClass.createPanel(55, "Total worth: ", "Enter value", valueOfProperties);
+        propertyDetailsPanel.setVisible(false);
+        realEstateOwnedPanel = textFieldUnderDecisionClass.createPanel(35, "REAL ESTATE OWNED", "Do you own any property?", propertyDetailsPanel, propertyGroup);
         sourceOfIncomePanel = sourceOfIncomePanelClass.createSourceOfIncome(box);
-        debtDetailsPanel = debtDetailsPanelClass.createDebtDetailsPanel();
-        currentDebtPanel = currentDebtPanelClass.createCurrentDebtPanel(debtDetailsPanel, debtGroup);
+        debtDetailsPanel = textFieldClass.createPanel(60, "Total debt: ", "Enter value", valueOfDebt);
+        debtDetailsPanel.setVisible(false);
+        currentDebtPanel = textFieldUnderDecisionClass.createPanel(55, "CURRENT DEBT", "Do you have any obligations?", debtDetailsPanel, debtGroup);
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout());

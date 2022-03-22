@@ -31,16 +31,16 @@ public class NextButtonContact {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == button) {
-                    Errors errors = new Errors();
-
-                    flag = errors.checkContactFields(mainPanelContact.getEmailPanel(), mainPanelContact.getEmailTextField(),
-                            mainPanelContact.getNumberPanel(), mainPanelContact.getNumberTextField(),
-                            mainPanelContact.getStreetPanel(), mainPanelContact.getStreetTextField(),
-                            mainPanelContact.getHouseNumberPanel(), mainPanelContact.getHouseNumberTextField(),
-                            mainPanelContact.getProvincePanel(), mainPanelContact.getProvinceTextField(),
-                            mainPanelContact.getCityPanel(), mainPanelContact.getCityTextField(),
-                            mainPanelContact.getCountryPanel(), mainPanelContact.getCountryTextField()
-                    );
+//                    Errors errors = new Errors();
+//
+//                    flag = errors.checkContactFields(mainPanelContact.getEmailPanel(), mainPanelContact.getEmailTextField(),
+//                            mainPanelContact.getNumberPanel(), mainPanelContact.getNumberTextField(),
+//                            mainPanelContact.getStreetPanel(), mainPanelContact.getStreetTextField(),
+//                            mainPanelContact.getHouseNumberPanel(), mainPanelContact.getHouseNumberTextField(),
+//                            mainPanelContact.getProvincePanel(), mainPanelContact.getProvinceTextField(),
+//                            mainPanelContact.getCityPanel(), mainPanelContact.getCityTextField(),
+//                            mainPanelContact.getCountryPanel(), mainPanelContact.getCountryTextField()
+//                    );
 
                     if(flag) {
                         ContactData contactData = new ContactData(
