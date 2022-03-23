@@ -5,12 +5,26 @@ import logic.data.DataCollection;
 public class CreditTermsPoints {
 
     private final DataCollection dataCollection;
+    private StringBuilder pointsView = new StringBuilder();
 
     public CreditTermsPoints(DataCollection dataCollection) {
         this.dataCollection = dataCollection;
     }
 
     public int getCreditTermsPoints() {
+        int points = 0;
+
+        points += getPurposeOfLoanPoints();
+        points += getOwnContributionPoints();
+
+        pointsView.append("CREDIT TERMS POINTS:\n");
+        pointsView.append("purpose of loan: " + getPurposeOfLoanPoints() + "\n");
+        pointsView.append("own contribution percentage: " + getOwnContributionPoints() + "\n");
+
+        return points;
+    }
+
+    private int getPurposeOfLoanPoints() {
         String path = dataCollection.getCreditTermsData().getPurposeOfLoan().toLowerCase();
 
         if(path.equals("real estate investment"))
@@ -35,5 +49,21 @@ public class CreditTermsPoints {
             return -200;
         else
             return -1;
+    }
+
+    private int getOwnContributionPoints() {
+        double percentage = (double) dataCollection.getCreditTermsData().getOwnContributionInLoan() / (double) dataCollection.getCreditTermsData().getAmountOfLoan() * 100;
+        if(percentage >= 5 && percentage < 25)
+            return 100;
+        else if(percentage < 50)
+            return 200;
+        else if(percentage >= 50)
+            return 500;
+        else
+            return -1;
+    }
+
+    public StringBuilder getPointsView() {
+        return pointsView;
     }
 }

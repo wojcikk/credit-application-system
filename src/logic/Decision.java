@@ -6,22 +6,27 @@ import logic.scoring.ScoringSystem;
 public class Decision {
     private final DataCollection dataCollection;
     private final MandatoryRequirements mandatoryRequirements;
+    private final PrivilegeRequirements privilegeRequirements;
     private final ScoringSystem scoringSystem;
     private boolean decision;
 
     public Decision(DataCollection dataCollection) {
         this.dataCollection = dataCollection;
         mandatoryRequirements = new MandatoryRequirements(dataCollection);
+        privilegeRequirements = new PrivilegeRequirements(dataCollection);
         scoringSystem = new ScoringSystem(dataCollection);
         getDecision();
     }
 
     public void getDecision() {
         int score = scoringSystem.getScore();
-        if(!mandatoryRequirements.isFlag()) {
-            System.out.println("Decision negative, cause of mandatory requirements");
+        if(privilegeRequirements.isFlag()) {
+            System.out.println("Decision positive" + privilegeRequirements.getReason());
             setDecision(false);
-        } else if(score >= 1100) {
+        } else if(!mandatoryRequirements.isFlag()) {
+            System.out.println("Decision negative" + mandatoryRequirements.getReason());
+            setDecision(false);
+        } else if(score >= 1000) {
             System.out.println("Decision positive");
             setDecision(true);
         } else if (score >= 500 && checkExtraRequirement()) {
@@ -35,11 +40,8 @@ public class Decision {
     }
 
     private boolean checkExtraRequirement() {
-        int profit = Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) - Integer.parseInt(dataCollection.getFinancialData().getAnnualExpenses());
-        if(profit * Integer.parseInt(dataCollection.getCreditTermsData().getPeriodOfLoan()) >= Integer.parseInt(dataCollection.getCreditTermsData().getAmountOfLoan()))
-            return true;
-        else
-            return false;
+        long profit = dataCollection.getFinancialData().getAnnualIncome() - dataCollection.getFinancialData().getAnnualExpenses();
+        return profit * dataCollection.getCreditTermsData().getPeriodOfLoan() >= dataCollection.getCreditTermsData().getAmountOfLoan();
     }
 
 

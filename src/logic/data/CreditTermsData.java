@@ -2,24 +2,30 @@ package logic.data;
 
 public class CreditTermsData {
     private final String purposeOfLoan;
-    private final String amountOfLoan;
-    private final String periodOfLoan;
+    private final long amountOfLoan;
+    private final long periodOfLoan;
+    private final long ownContributionInLoan;
 
-    public CreditTermsData(String purposeOfLoan, String amountOfLoan, String periodOfLoan) {
+    public CreditTermsData(String purposeOfLoan, long amountOfLoan, long periodOfLoan, long ownContributionInLoan) {
         this.purposeOfLoan = purposeOfLoan;
         this.amountOfLoan = amountOfLoan;
         this.periodOfLoan = periodOfLoan;
+        this.ownContributionInLoan = ownContributionInLoan;
     }
 
     public String getPurposeOfLoan() {
         return purposeOfLoan;
     }
 
-    public String getAmountOfLoan() {
+    public long getAmountOfLoan() {
         return amountOfLoan;
     }
 
-    public String getPeriodOfLoan() {
+    public long getPeriodOfLoan() {
         return periodOfLoan;
+    }
+
+    public long getOwnContributionInLoan() {
+        return ownContributionInLoan;
     }
 }

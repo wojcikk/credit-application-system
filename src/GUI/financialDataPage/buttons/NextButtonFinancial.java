@@ -9,8 +9,8 @@ import logic.data.PersonalData;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Objects;
 
 public class NextButtonFinancial {
 
@@ -33,7 +33,7 @@ public class NextButtonFinancial {
                 Errors errors = new Errors();
 
                 flag = errors.checkFinancialFields(
-                        mainPanelFinancial.getTypeOfIncomePanel(), mainPanelFinancial.getTypesBox().getSelectedItem().toString(),
+                        mainPanelFinancial.getTypeOfIncomePanel(), Objects.requireNonNull(mainPanelFinancial.getTypesBox().getSelectedItem()).toString(),
                         mainPanelFinancial.getAnnualIncomePanel(), mainPanelFinancial.getAnnualIncome(),
                         mainPanelFinancial.getAnnualExpensesPanel(), mainPanelFinancial.getAnnualExpenses(),
                         mainPanelFinancial.getRealEstateOwnedPanel(), mainPanelFinancial.getPropertyGroup(),
@@ -41,19 +41,18 @@ public class NextButtonFinancial {
                         mainPanelFinancial.getSourceOfIncomePanel(), mainPanelFinancial.getBox(),
                         mainPanelFinancial.getCurrentDebtPanel(), mainPanelFinancial.getDebtGroup(),
                         mainPanelFinancial.getDebtDetailsPanel(), mainPanelFinancial.getValueOfDebt()
-
                 );
 
-                if(Collections.list(mainPanelFinancial.getPropertyGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfProperties().setText("null");
-                if(Collections.list(mainPanelFinancial.getDebtGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfDebt().setText("null");
+                if(Collections.list(mainPanelFinancial.getPropertyGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfProperties().setText("-1");
+                if(Collections.list(mainPanelFinancial.getDebtGroup().getElements()).get(1).isSelected()) mainPanelFinancial.getValueOfDebt().setText("-1");
 
                 if(flag) {
                     FinancialData financialData = new FinancialData(mainPanelFinancial.getTypesBox().getSelectedItem().toString(),
-                            mainPanelFinancial.getAnnualIncome().getText(),
-                            mainPanelFinancial.getAnnualExpenses().getText(),
-                            mainPanelFinancial.getValueOfProperties().getText(),
+                            Long.parseLong(mainPanelFinancial.getAnnualIncome().getText()),
+                            Long.parseLong(mainPanelFinancial.getAnnualExpenses().getText()),
+                            Long.parseLong(mainPanelFinancial.getValueOfProperties().getText()),
                             mainPanelFinancial.getBox(),
-                            mainPanelFinancial.getValueOfDebt().getText()
+                            Long.parseLong(mainPanelFinancial.getValueOfDebt().getText())
                     );
 
                     mainPanelFinancial.getFinancialDataPage().dispose();

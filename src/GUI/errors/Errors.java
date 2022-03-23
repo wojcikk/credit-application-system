@@ -79,13 +79,15 @@ public class Errors {
     public boolean checkCreditTermsFields(
             JPanel purposeOfLoanPanel, String purposeOfLoanText,
             JPanel amountOfLoanPanel, JTextField amountOfLoan,
-            JPanel periodOfLoanPanel, String periodOfLoanText
+            JPanel periodOfLoanPanel, String periodOfLoanText,
+            JPanel ownContributionInLoanPanel, JTextField ownContributionInLoan
     ) {
         setFlag(true);
 
         checkTextBox("-", purposeOfLoanPanel, purposeOfLoanText);
         checkValue("Enter", amountOfLoanPanel, amountOfLoan);
         checkTextBox("-", periodOfLoanPanel, periodOfLoanText);
+        checkValue("Enter", ownContributionInLoanPanel, ownContributionInLoan);
 
         return flag;
     }

@@ -20,10 +20,13 @@ public class MainPanelCreditTerms {
     private JComboBox<String> purposesBox;
     private JTextField amountOfLoan;
     private JComboBox<String> periodsBox;
+    private JTextField ownContributionInLoan;
+
 
     private JPanel purposeOfLoanPanel;
     private JPanel amountOfLoanPanel;
     private JPanel periodOfLoanPanel;
+    private JPanel ownContributionInLoanPanel;
 
     public MainPanelCreditTerms(CreditTermsPage creditTermsPage) {
         this.creditTermsPage = creditTermsPage;
@@ -39,6 +42,7 @@ public class MainPanelCreditTerms {
         purposesBox = new JComboBox<>(purposes.getTypes());
         amountOfLoan = new JTextField();
         periodsBox = new JComboBox<>(periods.getTypes());
+        ownContributionInLoan = new JTextField();
 
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
@@ -57,6 +61,7 @@ public class MainPanelCreditTerms {
         purposeOfLoanPanel = comboBoxClass.createPanel(40, "PURPOSE OF LOAN", purposesBox);
         amountOfLoanPanel = textFieldClass.createPanel(45, "AMOUNT OF LOAN", "Enter amount", amountOfLoan);
         periodOfLoanPanel = comboBoxClass.createPanel(45, "PERIOD OF LOAN", periodsBox);
+        ownContributionInLoanPanel = textFieldClass.createPanel(10, "OWN CONTRIBUTION OF LOAN", "Enter amount of own contribution", ownContributionInLoan);
 
         JPanel buttons = new JPanel();
         buttons.setLayout(new GridLayout());
@@ -74,6 +79,8 @@ public class MainPanelCreditTerms {
         panel.add(amountOfLoanPanel);
         panel.add(Box.createVerticalGlue());
         panel.add(periodOfLoanPanel);
+        panel.add(Box.createVerticalGlue());
+        panel.add(ownContributionInLoanPanel);
         panel.add(Box.createVerticalGlue());
         panel.add(buttons);
         panel.add(Box.createVerticalGlue());
@@ -97,6 +104,10 @@ public class MainPanelCreditTerms {
         return periodsBox;
     }
 
+    public JTextField getOwnContributionInLoan() {
+        return ownContributionInLoan;
+    }
+
     public JPanel getPurposeOfLoanPanel() {
         return purposeOfLoanPanel;
     }
@@ -107,5 +118,9 @@ public class MainPanelCreditTerms {
 
     public JPanel getPeriodOfLoanPanel() {
         return periodOfLoanPanel;
+    }
+
+    public JPanel getOwnContributionInLoanPanel() {
+        return ownContributionInLoanPanel;
     }
 }

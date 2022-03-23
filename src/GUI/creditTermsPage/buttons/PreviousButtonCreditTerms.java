@@ -30,7 +30,6 @@ public class PreviousButtonCreditTerms {
                 if(e.getSource() == button) {
                     mainPanel.getCreditTermsPage().dispose();
                     new FinancialDataPage(personalData, contactData);
-
                 }
             }
         });

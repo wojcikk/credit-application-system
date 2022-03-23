@@ -5,13 +5,13 @@ import java.util.ArrayList;
 
 public class FinancialData {
     private final String typeOfContract;
-    private final String annualIncome;
-    private final String annualExpenses;
-    private final String propertiesValue;
+    private final long annualIncome;
+    private final long annualExpenses;
+    private final long propertiesValue;
     private final ArrayList<JCheckBox> sourcesOfIncome;
-    private final String debt;
+    private final long debt;
 
-    public FinancialData(String typeOfContract, String annualIncome, String annualExpenses, String propertiesValue, ArrayList<JCheckBox> sourcesOfIncome, String debt) {
+    public FinancialData(String typeOfContract, long annualIncome, long annualExpenses, long propertiesValue, ArrayList<JCheckBox> sourcesOfIncome, long debt) {
         this.typeOfContract = typeOfContract;
         this.annualIncome = annualIncome;
         this.annualExpenses = annualExpenses;
@@ -24,15 +24,15 @@ public class FinancialData {
         return typeOfContract;
     }
 
-    public String getAnnualIncome() {
+    public long getAnnualIncome() {
         return annualIncome;
     }
 
-    public String getAnnualExpenses() {
+    public long getAnnualExpenses() {
         return annualExpenses;
     }
 
-    public String getPropertiesValue() {
+    public long getPropertiesValue() {
         return propertiesValue;
     }
 
@@ -45,7 +45,7 @@ public class FinancialData {
         return sourcesOfIncome;
     }
 
-    public String getDebt() {
+    public long getDebt() {
         return debt;
     }
 }

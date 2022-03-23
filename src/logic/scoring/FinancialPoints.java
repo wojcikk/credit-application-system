@@ -5,6 +5,7 @@ import logic.data.DataCollection;
 public class FinancialPoints {
 
     private final DataCollection dataCollection;
+    private StringBuilder pointsView = new StringBuilder();
 
     public FinancialPoints(DataCollection dataCollection) {
         this.dataCollection = dataCollection;
@@ -15,11 +16,20 @@ public class FinancialPoints {
 
         points += getTypeOfIncomePoints();
         points += getAnnualIncomePoints();
-        if(!dataCollection.getFinancialData().getPropertiesValue().equals("null"))
+        if(dataCollection.getFinancialData().getPropertiesValue() != -1)
             points += getPropertiesValuePoints();
         points += getSourceOfIncomePoints();
-        if(!dataCollection.getFinancialData().getDebt().equals("null"))
+        if(dataCollection.getFinancialData().getDebt() != -1)
             points += getDebtPoints();
+
+        pointsView.append("FINANCIAL POINTS:\n");
+        pointsView.append("type of income: " + getTypeOfIncomePoints() + "\n");
+        pointsView.append("annual income: " + getAnnualIncomePoints() + "\n");
+        if(dataCollection.getFinancialData().getPropertiesValue() != -1)
+            pointsView.append("properties value: " + getPropertiesValuePoints() + "\n");
+        pointsView.append("source of income: " + getSourceOfIncomePoints() + "\n");
+        if(dataCollection.getFinancialData().getDebt() != -1)
+            pointsView.append("debt ratio: " + getDebtPoints() + "\n");
 
         return points;
     }
@@ -45,36 +55,36 @@ public class FinancialPoints {
     }
 
     private int getAnnualIncomePoints() {
-        if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 12000)
+        if (dataCollection.getFinancialData().getAnnualIncome() < 12000)
             return -100;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 36000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() < 36000)
             return -50;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 72000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() < 72000)
             return 0;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 120000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() < 120000)
             return 50;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 240000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() < 240000)
             return 150;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) < 600000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() < 600000)
             return 300;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getAnnualIncome()) >= 600000)
+        else if (dataCollection.getFinancialData().getAnnualIncome() >= 600000)
             return 500;
         else
             return -1;
     }
 
     private int getPropertiesValuePoints() {
-        if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) < 100000)
+        if (dataCollection.getFinancialData().getPropertiesValue() < 100000)
             return 0;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) < 500000)
+        else if (dataCollection.getFinancialData().getPropertiesValue() < 500000)
             return 50;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) < 1000000)
+        else if (dataCollection.getFinancialData().getPropertiesValue() < 1000000)
             return 100;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) < 2000000)
+        else if (dataCollection.getFinancialData().getPropertiesValue() < 2000000)
             return 150;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) < 5000000)
+        else if (dataCollection.getFinancialData().getPropertiesValue() < 5000000)
             return 250;
-        else if (Integer.parseInt(dataCollection.getFinancialData().getPropertiesValue()) >= 5000000)
+        else if (dataCollection.getFinancialData().getPropertiesValue() >= 5000000)
             return 500;
         else
             return -1;
@@ -105,7 +115,7 @@ public class FinancialPoints {
     }
 
     private int getDebtPoints() {
-        double ratio = (Double.parseDouble(dataCollection.getFinancialData().getAnnualIncome()) - Double.parseDouble(dataCollection.getFinancialData().getAnnualExpenses())) / Double.parseDouble(dataCollection.getFinancialData().getDebt());
+        double ratio = ((double) dataCollection.getFinancialData().getAnnualIncome() - (double) dataCollection.getFinancialData().getAnnualExpenses()) / (double) dataCollection.getFinancialData().getDebt();
 
         if(ratio < 2)
             return -250;
@@ -117,4 +127,7 @@ public class FinancialPoints {
             return -1;
     }
 
+    public StringBuilder getPointsView() {
+        return pointsView;
+    }
 }

@@ -31,14 +31,16 @@ public class NextButtonCreditTerms {
                 flag = errors.checkCreditTermsFields(
                         mainPanelCreditTerms.getPurposeOfLoanPanel(), mainPanelCreditTerms.getPurposesBox().getSelectedItem().toString(),
                         mainPanelCreditTerms.getAmountOfLoanPanel(), mainPanelCreditTerms.getAmountOfLoan(),
-                        mainPanelCreditTerms.getPeriodOfLoanPanel(), mainPanelCreditTerms.getPeriodsBox().getSelectedItem().toString()
+                        mainPanelCreditTerms.getPeriodOfLoanPanel(), mainPanelCreditTerms.getPeriodsBox().getSelectedItem().toString(),
+                        mainPanelCreditTerms.getOwnContributionInLoanPanel(), mainPanelCreditTerms.getOwnContributionInLoan()
                 );
 
                 if(flag) {
                     CreditTermsData creditTermsData = new CreditTermsData(
                             mainPanelCreditTerms.getPurposesBox().getSelectedItem().toString(),
-                            mainPanelCreditTerms.getAmountOfLoan().getText(),
-                            mainPanelCreditTerms.getPeriodsBox().getSelectedItem().toString()
+                            Long.parseLong(mainPanelCreditTerms.getAmountOfLoan().getText()),
+                            Long.parseLong(mainPanelCreditTerms.getPeriodsBox().getSelectedItem().toString()),
+                            Long.parseLong(mainPanelCreditTerms.getOwnContributionInLoan().getText())
                     );
 
                     new PrintData(personalData, contactData, financialData, creditTermsData);

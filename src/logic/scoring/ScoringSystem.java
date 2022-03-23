@@ -30,9 +30,12 @@ public class ScoringSystem {
 
     public void printScore() {
         System.out.println("Total points: " + score);
-        System.out.println("Personal points: " + personalScore);
-        System.out.println("Financial points: " + financialScore);
-        System.out.println("Credit terms points: " + creditTermsScore);
+        System.out.println(personalPoints.getPointsView());
+        System.out.println(financialPoints.getPointsView());
+        System.out.println(creditTermsPoints.getPointsView());
+//        System.out.println("Personal points: " + personalScore);
+//        System.out.println("Financial points: " + financialScore);
+//        System.out.println("Credit terms points: " + creditTermsScore);
     }
 
 

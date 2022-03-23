@@ -4,6 +4,7 @@ import logic.data.DataCollection;
 
 public class PersonalPoints {
     private final DataCollection dataCollection;
+    private StringBuilder pointsView = new StringBuilder();
 
     public PersonalPoints(DataCollection dataCollection) {
         this.dataCollection = dataCollection;
@@ -15,6 +16,10 @@ public class PersonalPoints {
         points += getMartialStatusPoints();
         points += getEducationPoints();
 
+        pointsView.append("PERSONAL POINTS:\n");
+        pointsView.append("martial status: " + getMartialStatusPoints() + "\n");
+        pointsView.append("education: " + getEducationPoints() + "\n");
+
         return points;
     }
 
@@ -24,7 +29,7 @@ public class PersonalPoints {
         else if(dataCollection.getPersonalData().getMartialStatus().toLowerCase().equals("married"))
             return 200;
         else
-            return 0;
+            return -1;
     }
 
     private int getEducationPoints() {
@@ -44,5 +49,7 @@ public class PersonalPoints {
             return -1;
     }
 
-
+    public StringBuilder getPointsView() {
+        return pointsView;
+    }
 }
