@@ -177,4 +177,6 @@ public class MainPanelPersonal {
     public JPanel getEducation() {
         return education;
     }
+
+
 }

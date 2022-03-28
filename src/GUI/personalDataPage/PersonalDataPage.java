@@ -47,4 +47,7 @@ public class PersonalDataPage extends JFrame {
         device.setFullScreenWindow(this);
     }
 
+    public MainPanelPersonal getMainPanelPersonal() {
+        return mainPanelPersonal;
+    }
 }

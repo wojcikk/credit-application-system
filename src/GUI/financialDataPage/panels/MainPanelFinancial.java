@@ -86,7 +86,7 @@ public class MainPanelFinancial {
         buttons.setLayout(new GridLayout());
         buttons.setMaximumSize(new Dimension(10000, 100));
         JButton nextButton = nextButtonClass.createNextButton(this, personalData, contactData);
-        JButton previousButton = previousButtonClass.createPreviousButton(this, personalData);
+        JButton previousButton = previousButtonClass.createPreviousButton(this, personalData, contactData);
         buttons.add(previousButton);
         buttons.add(nextButton);
 

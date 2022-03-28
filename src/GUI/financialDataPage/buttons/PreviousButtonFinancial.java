@@ -2,6 +2,8 @@ package GUI.financialDataPage.buttons;
 
 import GUI.contactDataPage.ContactDataPage;
 import GUI.financialDataPage.panels.MainPanelFinancial;
+import GUI.personalDataPage.PersonalDataPage;
+import logic.data.ContactData;
 import logic.data.PersonalData;
 
 import javax.swing.*;
@@ -11,7 +13,7 @@ import java.awt.event.ActionListener;
 
 public class PreviousButtonFinancial {
 
-    public JButton createPreviousButton(MainPanelFinancial mainPanel, PersonalData personalData) {
+    public JButton createPreviousButton(MainPanelFinancial mainPanel, PersonalData personalData, ContactData contactData) {
         JButton button = new JButton("PREV");
         button.setMaximumSize(new Dimension(100000, 100));
 
@@ -28,12 +30,23 @@ public class PreviousButtonFinancial {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == button) {
                     mainPanel.getFinancialDataPage().dispose();
-                    new ContactDataPage(personalData);
+                    ContactDataPage contactDataPage = new ContactDataPage(personalData);
 
+                    restorePage(contactDataPage, contactData);
                 }
             }
         });
 
         return button;
+    }
+
+    private void restorePage(ContactDataPage contactDataPage, ContactData contactData) {
+        contactDataPage.getMainPanel().getEmailTextField().setText(contactData.getEmail());
+        contactDataPage.getMainPanel().getNumberTextField().setText(contactData.getNumber());
+        contactDataPage.getMainPanel().getStreetTextField().setText(contactData.getStreet());
+        contactDataPage.getMainPanel().getHouseNumberTextField().setText(contactData.getHouseNumber());
+        contactDataPage.getMainPanel().getProvinceTextField().setText(contactData.getProvince());
+        contactDataPage.getMainPanel().getCityTextField().setText(contactData.getCity());
+        contactDataPage.getMainPanel().getCountryTextField().setText(contactData.getCountry());
     }
 }

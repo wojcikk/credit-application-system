@@ -72,7 +72,7 @@ public class MainPanelCreditTerms {
         buttons.setLayout(new GridLayout());
         buttons.setMaximumSize(new Dimension(10000, 100));
         JButton nextButton = nextButtonClass.createNextButton(this, personalData, contactData, financialData);
-        JButton previousButton = previousButtonClass.createPreviousButton(this, personalData, contactData);
+        JButton previousButton = previousButtonClass.createPreviousButton(this, personalData, contactData, financialData);
         buttons.add(previousButton);
         buttons.add(nextButton);
 

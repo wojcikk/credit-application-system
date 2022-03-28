@@ -2,6 +2,7 @@ package GUI.contactDataPage.buttons;
 
 import GUI.contactDataPage.panels.MainPanelContact;
 import GUI.personalDataPage.PersonalDataPage;
+import logic.data.PersonalData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +11,7 @@ import java.awt.event.ActionListener;
 
 public class PreviousButtonContact {
 
-    public JButton createPreviousButton(MainPanelContact mainPanel) {
+    public JButton createPreviousButton(MainPanelContact mainPanel, PersonalData personalData) {
         JButton button = new JButton("PREV");
         button.setMaximumSize(new Dimension(100000, 100));
 
@@ -27,12 +28,24 @@ public class PreviousButtonContact {
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == button) {
                     mainPanel.getContactDataPage().dispose();
-                    new PersonalDataPage();
+                    PersonalDataPage personalDataPage = new PersonalDataPage();
 
+                    restorePage(personalDataPage, personalData);
                 }
             }
         });
 
         return button;
+    }
+
+    private void restorePage(PersonalDataPage personalDataPage, PersonalData personalData) {
+        personalDataPage.getMainPanelPersonal().getNameTextField().setText(personalData.getName());
+        personalDataPage.getMainPanelPersonal().getSurnameTextField().setText(personalData.getSurname());
+        personalDataPage.getMainPanelPersonal().getMothersMaidenNameTextField().setText(personalData.getMothersMaidenName());
+        personalDataPage.getMainPanelPersonal().getDaysBox().setSelectedItem(personalData.getDayOfBirth());
+        personalDataPage.getMainPanelPersonal().getMonthsBox().setSelectedItem(personalData.getMonthOfBirth());
+        personalDataPage.getMainPanelPersonal().getYearsBox().setSelectedItem(personalData.getYearOfBirth());
+        personalDataPage.getMainPanelPersonal().getStatusesBox().setSelectedItem(personalData.getMartialStatus());
+        personalDataPage.getMainPanelPersonal().getStagesBox().setSelectedItem(personalData.getEducation());
     }
 }

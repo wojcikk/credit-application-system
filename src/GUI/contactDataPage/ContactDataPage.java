@@ -49,4 +49,7 @@ public class ContactDataPage extends JFrame{
         device.setFullScreenWindow(this);
     }
 
+    public MainPanelContact getMainPanel() {
+        return mainPanel;
+    }
 }

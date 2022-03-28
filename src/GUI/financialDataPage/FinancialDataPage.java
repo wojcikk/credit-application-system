@@ -49,4 +49,7 @@ public class FinancialDataPage extends JFrame{
         device.setFullScreenWindow(this);
     }
 
+    public MainPanelFinancial getMainPanel() {
+        return mainPanel;
+    }
 }

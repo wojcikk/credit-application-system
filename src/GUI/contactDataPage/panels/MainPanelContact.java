@@ -90,7 +90,7 @@ public class MainPanelContact {
         buttons.setLayout(new GridLayout());
         buttons.setMaximumSize(new Dimension(10000, 100));
         JButton nextButton = nextButtonClass.createNextButton(this, personalData);
-        JButton previousButton = previousButtonClass.createPreviousButton(this);
+        JButton previousButton = previousButtonClass.createPreviousButton(this, personalData);
         buttons.add(previousButton);
         buttons.add(nextButton);
 
@@ -174,4 +174,6 @@ public class MainPanelContact {
     public JPanel getCountryPanel() {
         return countryPanel;
     }
+
+
 }
