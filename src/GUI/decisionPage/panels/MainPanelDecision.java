@@ -1,7 +1,7 @@
 package GUI.decisionPage.panels;
 
-import GUI.creditTermsPage.panels.TitlePanelCreditTerms;
 import GUI.template.StatusBar;
+import GUI.template.TitlePanel;
 import logic.Decision;
 
 
@@ -16,7 +16,7 @@ public class MainPanelDecision {
     public JPanel createMainPanel(Decision decision) {
         JPanel panel = new JPanel();
 
-        TitlePanelCreditTerms titlePanelCreditTermsClass = new TitlePanelCreditTerms();
+        TitlePanel titlePanelClass = new TitlePanel();
         StatusBar statusBarClass = new StatusBar();
 
         panel.setBackground(Color.WHITE);
@@ -24,7 +24,7 @@ public class MainPanelDecision {
         panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
         panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
 
-        JPanel titlePanel = titlePanelCreditTermsClass.createTitlePanel();
+        JPanel titlePanel = titlePanelClass.createTitlePanel("DECISION");
         JPanel statusBar = statusBarClass.createStatusBarPanel(5);
         DecisionPanel decisionPanelClass = new DecisionPanel();
         ScoringPanel scoringPanelClass = new ScoringPanel();

@@ -37,7 +37,7 @@ public class MandatoryRequirements {
         }
     }
 
-    private void ageVerification() {
+    public void ageVerification() {
         if(java.time.LocalDate.now().getYear() - Integer.parseInt(dataCollection.getPersonalData().getYearOfBirth()) < 18) {
             setFlag(false);
             reason.append(", ");

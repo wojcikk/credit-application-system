@@ -5,6 +5,7 @@ import GUI.contactDataPage.buttons.NextButtonContact;
 import GUI.contactDataPage.buttons.PreviousButtonContact;
 import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
+import GUI.template.TitlePanel;
 import logic.data.PersonalData;
 
 import javax.swing.*;
@@ -49,7 +50,7 @@ public class MainPanelContact {
 
         TextFieldPanel textFieldClass = new TextFieldPanel();
 
-        TitlePanelContact titlePanelContactClass = new TitlePanelContact();
+        TitlePanel titlePanelClass = new TitlePanel();
 
         StatusBar statusBarClass = new StatusBar();
 
@@ -60,7 +61,7 @@ public class MainPanelContact {
         panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
         panel.setBackground(Color.white);
 
-        JPanel titlePanel = titlePanelContactClass.createTitlePanel();
+        JPanel titlePanel = titlePanelClass.createTitlePanel("CONTACT DATA");
 
         JPanel statusBar = statusBarClass.createStatusBarPanel(2);
 

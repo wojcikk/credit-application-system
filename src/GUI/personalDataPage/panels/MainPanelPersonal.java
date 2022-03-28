@@ -9,6 +9,7 @@ import GUI.personalDataPage.panels.dataArrays.ArrayOfMartialStatuses;
 import GUI.template.ComboBoxPanel;
 import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
+import GUI.template.TitlePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,7 +65,7 @@ public class MainPanelPersonal {
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
 
-        TitlePanelPersonal titlePanelPersonalClass = new TitlePanelPersonal();
+        TitlePanel titlePanelClass = new TitlePanel();
         StatusBar statusBarClass = new StatusBar();
         DateOfBirthPanel dateOfBirthPanelClass = new DateOfBirthPanel(daysBox, monthsBox, yearsBox);
         PreviousButtonPersonal previousButtonClass = new PreviousButtonPersonal();
@@ -74,7 +75,7 @@ public class MainPanelPersonal {
         panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
         panel.setBackground(Color.white);
 
-        JPanel titlePanel = titlePanelPersonalClass.createTitlePanel();
+        JPanel titlePanel = titlePanelClass.createTitlePanel("PERSONAL DATA");
         JPanel statusBar = statusBarClass.createStatusBarPanel(1);
         nameField = textFieldClass.createPanel(90, "NAME", "Enter name", nameTextField);
         surnameField = textFieldClass.createPanel(78, "SURNAME", "Enter surname", surnameTextField);

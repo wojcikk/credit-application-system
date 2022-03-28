@@ -4,6 +4,7 @@ import logic.data.DataCollection;
 
 public class PrivilegeRequirements {
     private final DataCollection dataCollection;
+    private MandatoryRequirements mandatoryRequirements;
     private boolean flag;
     private StringBuilder reason;
 
@@ -14,8 +15,9 @@ public class PrivilegeRequirements {
     }
 
     private void check() {
-        setFlag(true);
-        comparisonOfProfitAndLoan();
+        setFlag(false);
+        ageVerification();
+        if(isFlag()) comparisonOfProfitAndLoan();
     }
 
     private void comparisonOfProfitAndLoan() {
@@ -23,11 +25,16 @@ public class PrivilegeRequirements {
         if(profit > 2 * dataCollection.getCreditTermsData().getAmountOfLoan()) {
             setFlag(true);
             reason.append(", with privilege decision");
-        } else {
-            setFlag(false);
         }
     }
 
+    public void ageVerification() {
+        if(java.time.LocalDate.now().getYear() - Integer.parseInt(dataCollection.getPersonalData().getYearOfBirth()) < 18) {
+            setFlag(false);
+            reason.append(", ");
+            reason.append("client is underage");
+        }
+    }
 
 
     public boolean isFlag() {

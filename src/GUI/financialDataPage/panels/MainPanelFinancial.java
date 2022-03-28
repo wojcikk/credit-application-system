@@ -4,10 +4,7 @@ import GUI.financialDataPage.FinancialDataPage;
 import GUI.financialDataPage.buttons.NextButtonFinancial;
 import GUI.financialDataPage.buttons.PreviousButtonFinancial;
 import GUI.financialDataPage.dataArrays.ArrayOfTypes;
-import GUI.template.ComboBoxPanel;
-import GUI.template.StatusBar;
-import GUI.template.TextFieldPanel;
-import GUI.template.TextFieldUnderDecisionPanel;
+import GUI.template.*;
 import logic.data.ContactData;
 import logic.data.PersonalData;
 
@@ -58,7 +55,7 @@ public class MainPanelFinancial {
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
         TextFieldUnderDecisionPanel textFieldUnderDecisionClass = new TextFieldUnderDecisionPanel();
 
-        TitlePanelFinancial titlePanelFinancialClass = new TitlePanelFinancial();
+        TitlePanel titlePanelClass = new TitlePanel();
 
         StatusBar statusBarClass = new StatusBar();
 
@@ -71,7 +68,7 @@ public class MainPanelFinancial {
         panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
         panel.setBackground(Color.white);
 
-        JPanel titlePanel = titlePanelFinancialClass.createTitlePanel();
+        JPanel titlePanel = titlePanelClass.createTitlePanel("FINANCIAL DATA");
         JPanel statusBar = statusBarClass.createStatusBarPanel(3);
 
         typeOfIncomePanel = comboBoxClass.createPanel(45, "TYPE OF INCOME", typesBox);

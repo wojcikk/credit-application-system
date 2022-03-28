@@ -8,6 +8,7 @@ import GUI.creditTermsPage.dataArrays.ArrayOfPurposes;
 import GUI.template.ComboBoxPanel;
 import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
+import GUI.template.TitlePanel;
 import logic.data.ContactData;
 import logic.data.FinancialData;
 import logic.data.PersonalData;
@@ -48,7 +49,7 @@ public class MainPanelCreditTerms {
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
 
-        TitlePanelCreditTerms titlePanelCreditTermsClass = new TitlePanelCreditTerms();
+        TitlePanel titlePanelClass = new TitlePanel();
 
         StatusBar statusBarClass = new StatusBar();
 
@@ -59,7 +60,7 @@ public class MainPanelCreditTerms {
         panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
         panel.setBackground(Color.white);
 
-        JPanel titlePanel = titlePanelCreditTermsClass.createTitlePanel();
+        JPanel titlePanel = titlePanelClass.createTitlePanel("CREDIT TERMS DATA");
         JPanel statusBar = statusBarClass.createStatusBarPanel(4);
 
         purposeOfLoanPanel = comboBoxClass.createPanel(40, "PURPOSE OF LOAN", purposesBox);
@@ -77,6 +78,7 @@ public class MainPanelCreditTerms {
 
         panel.add(Box.createVerticalGlue());
         panel.add(titlePanel);
+        panel.add(statusBar);
         panel.add(Box.createVerticalGlue());
         panel.add(purposeOfLoanPanel);
         panel.add(Box.createVerticalGlue());
