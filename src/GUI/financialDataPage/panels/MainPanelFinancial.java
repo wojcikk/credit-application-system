@@ -5,6 +5,7 @@ import GUI.financialDataPage.buttons.NextButtonFinancial;
 import GUI.financialDataPage.buttons.PreviousButtonFinancial;
 import GUI.financialDataPage.dataArrays.ArrayOfTypes;
 import GUI.template.ComboBoxPanel;
+import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
 import GUI.template.TextFieldUnderDecisionPanel;
 import logic.data.ContactData;
@@ -59,6 +60,8 @@ public class MainPanelFinancial {
 
         TitlePanelFinancial titlePanelFinancialClass = new TitlePanelFinancial();
 
+        StatusBar statusBarClass = new StatusBar();
+
         SourceOfIncomePanel sourceOfIncomePanelClass = new SourceOfIncomePanel();
 
         PreviousButtonFinancial previousButtonClass = new PreviousButtonFinancial();
@@ -69,6 +72,7 @@ public class MainPanelFinancial {
         panel.setBackground(Color.white);
 
         JPanel titlePanel = titlePanelFinancialClass.createTitlePanel();
+        JPanel statusBar = statusBarClass.createStatusBarPanel(3);
 
         typeOfIncomePanel = comboBoxClass.createPanel(45, "TYPE OF INCOME", typesBox);
         annualIncomePanel = textFieldClass.createPanel(55, "ANNUAL INCOME", "Enter income", annualIncome);
@@ -91,6 +95,7 @@ public class MainPanelFinancial {
 
         panel.add(Box.createVerticalGlue());
         panel.add(titlePanel);
+        panel.add(statusBar);
         panel.add(Box.createVerticalGlue());
         panel.add(typeOfIncomePanel);
         panel.add(Box.createVerticalGlue());

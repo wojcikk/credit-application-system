@@ -6,6 +6,7 @@ import GUI.creditTermsPage.buttons.PreviousButtonCreditTerms;
 import GUI.creditTermsPage.dataArrays.ArrayOfPeriods;
 import GUI.creditTermsPage.dataArrays.ArrayOfPurposes;
 import GUI.template.ComboBoxPanel;
+import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
 import logic.data.ContactData;
 import logic.data.FinancialData;
@@ -49,6 +50,8 @@ public class MainPanelCreditTerms {
 
         TitlePanelCreditTerms titlePanelCreditTermsClass = new TitlePanelCreditTerms();
 
+        StatusBar statusBarClass = new StatusBar();
+
         PreviousButtonCreditTerms previousButtonClass = new PreviousButtonCreditTerms();
         NextButtonCreditTerms nextButtonClass = new NextButtonCreditTerms();
 
@@ -57,6 +60,7 @@ public class MainPanelCreditTerms {
         panel.setBackground(Color.white);
 
         JPanel titlePanel = titlePanelCreditTermsClass.createTitlePanel();
+        JPanel statusBar = statusBarClass.createStatusBarPanel(4);
 
         purposeOfLoanPanel = comboBoxClass.createPanel(40, "PURPOSE OF LOAN", purposesBox);
         amountOfLoanPanel = textFieldClass.createPanel(45, "AMOUNT OF LOAN", "Enter amount", amountOfLoan);

@@ -38,5 +38,15 @@ public class ScoringSystem {
 //        System.out.println("Credit terms points: " + creditTermsScore);
     }
 
+    public int getPersonalScore() {
+        return personalScore;
+    }
 
+    public int getFinancialScore() {
+        return financialScore;
+    }
+
+    public int getCreditTermsScore() {
+        return creditTermsScore;
+    }
 }

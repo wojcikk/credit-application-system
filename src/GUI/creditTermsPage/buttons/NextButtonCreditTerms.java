@@ -1,12 +1,15 @@
 package GUI.creditTermsPage.buttons;
 
 import GUI.creditTermsPage.panels.MainPanelCreditTerms;
+import GUI.decisionPage.DecisionPage;
 import GUI.errors.Errors;
 import logic.*;
 import logic.data.*;
+import logic.scoring.PersonalPoints;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class NextButtonCreditTerms {
 
@@ -44,8 +47,12 @@ public class NextButtonCreditTerms {
                     );
 
                     new PrintData(personalData, contactData, financialData, creditTermsData);
+
+
                     DataCollection dataCollection = new DataCollection(personalData, contactData, financialData, creditTermsData);
-                    new Decision(dataCollection);
+                    Decision decision = new Decision(dataCollection);
+                    new DecisionPage(dataCollection, decision);
+                    mainPanelCreditTerms.getCreditTermsPage().dispose();
                 }
             }
         });

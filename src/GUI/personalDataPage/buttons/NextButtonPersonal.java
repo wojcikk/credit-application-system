@@ -49,8 +49,7 @@ public class NextButtonPersonal {
                                 mainPanelPersonal.getMothersMaidenNameTextField().getText(),
                                 mainPanelPersonal.getDaysBox().getSelectedItem().toString(),
                                 mainPanelPersonal.getMonthsBox().getSelectedItem().toString(),
-                                "20",
-                                //mainPanelPersonal.getYearsBox().getSelectedItem().toString(),
+                                mainPanelPersonal.getYearsBox().getSelectedItem().toString(),
                                 mainPanelPersonal.getStatusesBox().getSelectedItem().toString(),
                                 mainPanelPersonal.getStagesBox().getSelectedItem().toString()
                         );

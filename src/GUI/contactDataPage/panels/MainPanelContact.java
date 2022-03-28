@@ -3,6 +3,7 @@ package GUI.contactDataPage.panels;
 import GUI.contactDataPage.ContactDataPage;
 import GUI.contactDataPage.buttons.NextButtonContact;
 import GUI.contactDataPage.buttons.PreviousButtonContact;
+import GUI.template.StatusBar;
 import GUI.template.TextFieldPanel;
 import logic.data.PersonalData;
 
@@ -50,6 +51,8 @@ public class MainPanelContact {
 
         TitlePanelContact titlePanelContactClass = new TitlePanelContact();
 
+        StatusBar statusBarClass = new StatusBar();
+
         NextButtonContact nextButtonClass = new NextButtonContact();
         PreviousButtonContact previousButtonClass = new PreviousButtonContact();
 
@@ -58,6 +61,9 @@ public class MainPanelContact {
         panel.setBackground(Color.white);
 
         JPanel titlePanel = titlePanelContactClass.createTitlePanel();
+
+        JPanel statusBar = statusBarClass.createStatusBarPanel(2);
+
         emailPanel = textFieldClass.createPanel(90, "EMAIL", "Enter email", emailTextField);
         numberPanel = textFieldClass.createPanel(80, "NUMBER", "Enter number", numberTextField);
 
@@ -90,6 +96,7 @@ public class MainPanelContact {
 
         panel.add(Box.createVerticalGlue());
         panel.add(titlePanel);
+        panel.add(statusBar);
         panel.add(Box.createVerticalGlue());
         panel.add(emailPanel);
         panel.add(Box.createVerticalGlue());

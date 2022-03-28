@@ -96,15 +96,15 @@ public class FinancialPoints {
             if(dataCollection.getFinancialData().getSourcesOfIncome().get(i).isSelected()) {
                 System.out.println(dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase());
                 if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("contract salary"))
-                    points += 150;
+                    points += 100;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("self employment income"))
                     points += 50;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("pension"))
-                    points += -50;
+                    points += 0;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("scholarships"))
-                    points += -100;
+                    points += -50;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("real estate rent income"))
-                    points += +100;
+                    points += +50;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("other benefits"))
                     points += 0;
                 else if (dataCollection.getFinancialData().getSourcesOfIncome().get(i).getText().toLowerCase().equals("none"))

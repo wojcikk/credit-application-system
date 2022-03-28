@@ -37,11 +37,6 @@ public class FinancialData {
     }
 
     public ArrayList<JCheckBox> getSourcesOfIncome() {
-//        for(int i = 0; i < sourcesOfIncome.size(); i++) {
-//            if(sourcesOfIncome.get(i).isSelected())
-//                System.out.print(sourcesOfIncome.get(i).getText() + "\t\t");
-//        }
-//        System.out.println();
         return sourcesOfIncome;
     }
 

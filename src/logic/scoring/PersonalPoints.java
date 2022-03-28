@@ -29,7 +29,7 @@ public class PersonalPoints {
         else if(dataCollection.getPersonalData().getMartialStatus().toLowerCase().equals("married"))
             return 200;
         else
-            return -1;
+            return 0;
     }
 
     private int getEducationPoints() {
