@@ -6,10 +6,7 @@ import GUI.personalDataPage.buttons.PreviousButtonPersonal;
 import GUI.personalDataPage.panels.dataArrays.ArrayOfDates;
 import GUI.personalDataPage.panels.dataArrays.ArrayOfEducationStages;
 import GUI.personalDataPage.panels.dataArrays.ArrayOfMartialStatuses;
-import GUI.template.ComboBoxPanel;
-import GUI.template.StatusBar;
-import GUI.template.TextFieldPanel;
-import GUI.template.TitlePanel;
+import GUI.template.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -64,10 +61,10 @@ public class MainPanelPersonal {
 
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
+        SpecialPanel specialPanelClass = new SpecialPanel();
 
         TitlePanel titlePanelClass = new TitlePanel();
         StatusBar statusBarClass = new StatusBar();
-        DateOfBirthPanel dateOfBirthPanelClass = new DateOfBirthPanel(daysBox, monthsBox, yearsBox);
         PreviousButtonPersonal previousButtonClass = new PreviousButtonPersonal();
         NextButtonPersonal nextButtonClass = new NextButtonPersonal();
 
@@ -80,7 +77,7 @@ public class MainPanelPersonal {
         nameField = textFieldClass.createPanel(90, "NAME", "Enter name", nameTextField);
         surnameField = textFieldClass.createPanel(78, "SURNAME", "Enter surname", surnameTextField);
         mothersMaidenNameField = textFieldClass.createPanel(20, "MOTHER'S MAIDEN NAME", "Enter mother's maiden name", mothersMaidenNameTextField);
-        dateOfBirth = dateOfBirthPanelClass.createDateOfBirth();
+        dateOfBirth = specialPanelClass.createDateOfBirth(daysBox, monthsBox, yearsBox);
         martialStatus = comboBoxClass.createPanel(50, "MARTIAL STATUS", statusesBox);
         education = comboBoxClass.createPanel(70, "EDUCATION", stagesBox);
 

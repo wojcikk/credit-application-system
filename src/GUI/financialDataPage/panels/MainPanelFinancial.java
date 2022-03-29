@@ -54,12 +54,11 @@ public class MainPanelFinancial {
         TextFieldPanel textFieldClass = new TextFieldPanel();
         ComboBoxPanel comboBoxClass = new ComboBoxPanel();
         TextFieldUnderDecisionPanel textFieldUnderDecisionClass = new TextFieldUnderDecisionPanel();
+        SpecialPanel specialPanelClass = new SpecialPanel();
 
         TitlePanel titlePanelClass = new TitlePanel();
 
         StatusBar statusBarClass = new StatusBar();
-
-        SourceOfIncomePanel sourceOfIncomePanelClass = new SourceOfIncomePanel();
 
         PreviousButtonFinancial previousButtonClass = new PreviousButtonFinancial();
         NextButtonFinancial nextButtonClass = new NextButtonFinancial();
@@ -77,7 +76,7 @@ public class MainPanelFinancial {
         propertyDetailsPanel = textFieldClass.createPanel(55, "Total worth: ", "Enter value", valueOfProperties);
         propertyDetailsPanel.setVisible(false);
         realEstateOwnedPanel = textFieldUnderDecisionClass.createPanel(35, "REAL ESTATE OWNED", "Do you own any property?", propertyDetailsPanel, propertyGroup);
-        sourceOfIncomePanel = sourceOfIncomePanelClass.createSourceOfIncome(box);
+        sourceOfIncomePanel = specialPanelClass.createSourceOfIncome(box);
         debtDetailsPanel = textFieldClass.createPanel(60, "Total debt: ", "Enter value", valueOfDebt);
         debtDetailsPanel.setVisible(false);
         currentDebtPanel = textFieldUnderDecisionClass.createPanel(55, "CURRENT DEBT", "Do you have any obligations?", debtDetailsPanel, debtGroup);
