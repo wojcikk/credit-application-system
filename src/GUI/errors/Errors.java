@@ -7,6 +7,9 @@ import java.util.Collections;
 
 public class Errors {
     private boolean flag;
+    private final String textFieldKeyword = "Enter";
+    private final String textBoxKeyword = "-";
+    private final String errorKeyword = "Wrong";
 
     public boolean checkPersonalFields(JPanel nameField, JTextField nameTextField,
                                JPanel surnameField, JTextField surnameTextField,
@@ -20,14 +23,14 @@ public class Errors {
                                ) {
         setFlag(true);
 
-        checkTextField("Enter", nameField, nameTextField);
-        checkTextField("Enter", surnameField, surnameTextField);
-        checkTextField("Enter", mothersMaidenNameField, mothersMaidenNameTextField);
-        checkTextBox("-", dateOfBirth, dayText);
-        checkTextBox("-", dateOfBirth, monthText);
-        checkTextBox("-", dateOfBirth, yearText);
-        checkTextBox("-", martialStatusPanel, statusBox);
-        checkTextBox("-", educationPanel, stagesBox);
+        checkStringTextField(nameField, nameTextField);
+        checkStringTextField(surnameField, surnameTextField);
+        checkStringTextField(mothersMaidenNameField, mothersMaidenNameTextField);
+        checkTextBox(dateOfBirth, dayText);
+        checkTextBox(dateOfBirth, monthText);
+        checkTextBox(dateOfBirth, yearText);
+        checkTextBox(martialStatusPanel, statusBox);
+        checkTextBox(educationPanel, stagesBox);
 
         return flag;
     }
@@ -41,13 +44,13 @@ public class Errors {
                                        JPanel countryPanel, JTextField countryTextField) {
         setFlag(true);
 
-        checkEmail("Enter", emailPanel, emailTextField);
-        checkNumber("Enter", numberPanel, numberTextField);
-        checkTextField("Enter", streetPanel, streetTextField);
-        checkTextField("Enter", houseNumberPanel, houseNumberTextField);
-        checkTextField("Enter", provincePanel, provinceTextField);
-        checkTextField("Enter", cityPanel, cityTextField);
-        checkTextField("Enter", countryPanel, countryTextField);
+        checkEmail(emailPanel, emailTextField);
+        checkNumber(numberPanel, numberTextField);
+        checkStringTextField(streetPanel, streetTextField);
+        checkTextFieldBasis(houseNumberPanel, houseNumberTextField);
+        checkStringTextField(provincePanel, provinceTextField);
+        checkStringTextField(cityPanel, cityTextField);
+        checkStringTextField(countryPanel, countryTextField);
 
 
         return flag;
@@ -64,14 +67,14 @@ public class Errors {
     ) {
         setFlag(true);
 
-        checkTextBox("-", typeOfIncomePanel, typeOfIncomePanelText);
-        checkValue("Enter", annualIncomePanel, numberTextField);
-        checkValue("Enter", annualExpensePanel, countryTextField);
+        checkTextBox(typeOfIncomePanel, typeOfIncomePanelText);
+        checkValue(annualIncomePanel, numberTextField);
+        checkValue(annualExpensePanel, countryTextField);
         checkButtonGroup(realEstateOwnedPanel, propertyButtonGroup);
-        checkUnderButtonTextField("Enter", propertyDetailsPanel, valueOfProperties, propertyButtonGroup);
+        checkUnderButtonTextField(propertyDetailsPanel, valueOfProperties, propertyButtonGroup);
         checkCheckBoxes(sourceOfIncomePanel, box);
         checkButtonGroup(currentDebtPanel, debtButtonGroup);
-        checkUnderButtonTextField("Enter", debtDetailsPanel, valueOfDebt, debtButtonGroup);
+        checkUnderButtonTextField(debtDetailsPanel, valueOfDebt, debtButtonGroup);
 
         return flag;
     }
@@ -84,10 +87,10 @@ public class Errors {
     ) {
         setFlag(true);
 
-        checkTextBox("-", purposeOfLoanPanel, purposeOfLoanText);
-        checkValue("Enter", amountOfLoanPanel, amountOfLoan);
-        checkTextBox("-", periodOfLoanPanel, periodOfLoanText);
-        checkValue("Enter", ownContributionInLoanPanel, ownContributionInLoan);
+        checkTextBox(purposeOfLoanPanel, purposeOfLoanText);
+        checkValue(amountOfLoanPanel, amountOfLoan);
+        checkTextBox(periodOfLoanPanel, periodOfLoanText);
+        checkValue(ownContributionInLoanPanel, ownContributionInLoan);
 
         return flag;
     }
@@ -99,7 +102,7 @@ public class Errors {
             if(box.get(i).isSelected())
                 selected = true;
 
-        if(selected == false) {
+        if(!selected) {
             panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             setFlag(false);
         }
@@ -117,10 +120,10 @@ public class Errors {
         }
     }
 
-    private void checkUnderButtonTextField(String text, JPanel panel, JTextField textField, ButtonGroup buttonGroup) {
+    private void checkUnderButtonTextField(JPanel panel, JTextField textField, ButtonGroup buttonGroup) {
         ArrayList<AbstractButton> buttons = Collections.list(buttonGroup.getElements());
         setNormalDesign(panel, textField);
-        if(buttons.get(0).isSelected() && textField.getText().contains(text) || textField.getText().contains("Wrong") || textField.getText().isEmpty()) {
+        if(buttons.get(0).isSelected() && textField.getText().contains(textFieldKeyword) || textField.getText().contains(errorKeyword) || textField.getText().isEmpty()) {
             setWrongInputDesign(panel, textField);
         } else if (buttons.get(0).isSelected()) {
             for(int i = 0; i < textField.getText().length(); i++) {
@@ -133,36 +136,48 @@ public class Errors {
         }
     }
 
-    private void checkTextField(String text, JPanel panel, JTextField textField) {
+    private boolean checkTextFieldBasis(JPanel panel, JTextField textField) {
         setNormalDesign(panel, textField);
-        if(textField.getText().contains(text) || textField.getText().contains("Wrong") || textField.getText().isEmpty()) {
+        if(textField.getText().contains(textFieldKeyword) || textField.getText().contains(errorKeyword) || textField.getText().isEmpty()) {
             setWrongInputDesign(panel, textField);
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
+    private void checkStringTextField(JPanel panel, JTextField textField) {
+        if(checkTextFieldBasis(panel, textField)) {
+            for(int i = 0; i < textField.getText().length(); i++) {
+                char t = textField.getText().substring(i, i+1).charAt(0);
+                if(!Character.isLetter(t)) {
+                    setWrongInputDesign(panel, textField);
+                    textField.setText("Wrong input - input can only contain letters");
+                }
+            }
         }
     }
 
-    private void checkTextBox(String text, JPanel panel, String textBox) {
+    private void checkTextBox(JPanel panel, String textBox) {
         panel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
-        if(textBox.equals(text)) {
+        if(textBox.equals(textBoxKeyword)) {
             panel.setBorder(BorderFactory.createLineBorder(Color.red, 1));
             setFlag(false);
         }
     }
 
-    private void checkEmail(String text, JPanel panel, JTextField textField) {
-        setNormalDesign(panel, textField);
-        if(textField.getText().contains(text) || textField.getText().contains("Wrong input") || textField.getText().isEmpty()) {
-            setWrongInputDesign(panel, textField);
-        } else if(!textField.getText().contains("@")) {
-            setWrongInputDesign(panel, textField);
-            textField.setText("Wrong input - email need to contain \"@\"");
+    private void checkEmail(JPanel panel, JTextField textField) {
+        if(checkTextFieldBasis(panel, textField)) {
+            if(!textField.getText().contains("@")) {
+                setWrongInputDesign(panel, textField);
+                textField.setText("Wrong input - email need to contain \"@\"");
+            }
         }
     }
 
-    private void checkValue(String text, JPanel panel, JTextField textField) {
-        setNormalDesign(panel, textField);
-        if(textField.getText().contains(text) || textField.getText().contains("Wrong input") || textField.getText().isEmpty()) {
-            setWrongInputDesign(panel, textField);
-        } else {
+    private void checkValue(JPanel panel, JTextField textField) {
+        if(checkTextFieldBasis(panel, textField)) {
             for(int i = 0; i < textField.getText().length(); i++) {
                 char t = textField.getText().substring(i, i+1).charAt(0);
                 if(!Character.isDigit(t)) {
@@ -173,19 +188,18 @@ public class Errors {
         }
     }
 
-    private void checkNumber(String text, JPanel panel, JTextField textField) {
-        setNormalDesign(panel, textField);
-        if(textField.getText().contains(text) || textField.getText().contains("Wrong input") || textField.getText().isEmpty()) {
-            setWrongInputDesign(panel, textField);
-        } else if(textField.getText().length() != 9) {
-            setWrongInputDesign(panel, textField);
-            textField.setText("Wrong input - number must consist of 9 digits");
-        } else {
-            for(int i = 0; i < textField.getText().length(); i++) {
-                char t = textField.getText().substring(i, i+1).charAt(0);
-                if(!Character.isDigit(t)) {
-                    setWrongInputDesign(panel, textField);
-                    textField.setText("Wrong input - number can only contain digits");
+    private void checkNumber(JPanel panel, JTextField textField) {
+        if(checkTextFieldBasis(panel, textField)) {
+            if (textField.getText().length() != 9) {
+                setWrongInputDesign(panel, textField);
+                textField.setText("Wrong input - number must consist of 9 digits");
+            } else {
+                for (int i = 0; i < textField.getText().length(); i++) {
+                    char t = textField.getText().substring(i, i + 1).charAt(0);
+                    if (!Character.isDigit(t)) {
+                        setWrongInputDesign(panel, textField);
+                        textField.setText("Wrong input - number can only contain digits");
+                    }
                 }
             }
         }

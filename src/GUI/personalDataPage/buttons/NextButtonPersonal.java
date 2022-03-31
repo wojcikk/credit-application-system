@@ -31,17 +31,17 @@ public class NextButtonPersonal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(e.getSource() == button) {
-//                    Errors errors = new Errors();
-//
-//                    flag = errors.checkPersonalFields(mainPanelPersonal.getNameField(), mainPanelPersonal.getNameTextField(),
-//                            mainPanelPersonal.getSurnameField(), mainPanelPersonal.getSurnameTextField(),
-//                            mainPanelPersonal.getMothersMaidenNameField(), mainPanelPersonal.getMothersMaidenNameTextField(),
-//                            mainPanelPersonal.getDateOfBirth(), mainPanelPersonal.getDaysBox().getSelectedItem().toString(),
-//                            mainPanelPersonal.getMonthsBox().getSelectedItem().toString(),
-//                            mainPanelPersonal.getYearsBox().getSelectedItem().toString(),
-//                            mainPanelPersonal.getMartialStatus(), mainPanelPersonal.getStatusesBox().getSelectedItem().toString(),
-//                            mainPanelPersonal.getEducation(), mainPanelPersonal.getStagesBox().getSelectedItem().toString()
-//                    );
+                    Errors errors = new Errors();
+
+                    flag = errors.checkPersonalFields(mainPanelPersonal.getNameField(), mainPanelPersonal.getNameTextField(),
+                            mainPanelPersonal.getSurnameField(), mainPanelPersonal.getSurnameTextField(),
+                            mainPanelPersonal.getMothersMaidenNameField(), mainPanelPersonal.getMothersMaidenNameTextField(),
+                            mainPanelPersonal.getDateOfBirth(), mainPanelPersonal.getDaysBox().getSelectedItem().toString(),
+                            mainPanelPersonal.getMonthsBox().getSelectedItem().toString(),
+                            mainPanelPersonal.getYearsBox().getSelectedItem().toString(),
+                            mainPanelPersonal.getMartialStatus(), mainPanelPersonal.getStatusesBox().getSelectedItem().toString(),
+                            mainPanelPersonal.getEducation(), mainPanelPersonal.getStagesBox().getSelectedItem().toString()
+                    );
 
                     if(flag) {
                         PersonalData personalData = new PersonalData(mainPanelPersonal.getNameTextField().getText(),
