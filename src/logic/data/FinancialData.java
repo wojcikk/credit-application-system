@@ -40,6 +40,15 @@ public class FinancialData {
         return sourcesOfIncome;
     }
 
+    public String getSourcesOfIncomeString() {
+        StringBuilder text = new StringBuilder();
+        for(int i = 0; i < sourcesOfIncome.size() && sourcesOfIncome.get(i).isSelected(); i++) {
+            text.append(sourcesOfIncome.get(i).getText());
+            if (i != (sourcesOfIncome.size() - 1)) text.append(", ");
+        }
+        return text.toString();
+    }
+
     public long getDebt() {
         return debt;
     }

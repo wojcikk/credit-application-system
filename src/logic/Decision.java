@@ -28,9 +28,9 @@ public class Decision {
             setReasonPrompt(privilegeRequirements.getReason().toString());
             setDecision(true);
         } else if(!mandatoryRequirements.isFlag()) {
-            System.out.println("Decision negative");
+            System.out.println("Decision negative" + mandatoryRequirements.getReason().toString());
             setDecisionPrompt("Decision negative");
-            setReasonPrompt(privilegeRequirements.getReason().toString());
+            setReasonPrompt(mandatoryRequirements.getReason().toString());
             setDecision(false);
         } else if(score >= 1000) {
             System.out.println("Decision positive");

@@ -3,6 +3,7 @@ package GUI.creditTermsPage.buttons;
 import GUI.creditTermsPage.panels.MainPanelCreditTerms;
 import GUI.decisionPage.DecisionPage;
 import GUI.errors.Errors;
+import database.Database;
 import logic.*;
 import logic.data.*;
 import logic.scoring.PersonalPoints;
@@ -51,6 +52,7 @@ public class NextButtonCreditTerms {
 
                     DataCollection dataCollection = new DataCollection(personalData, contactData, financialData, creditTermsData);
                     Decision decision = new Decision(dataCollection);
+                    new Database(dataCollection, decision);
                     new DecisionPage(dataCollection, decision);
                     mainPanelCreditTerms.getCreditTermsPage().dispose();
                 }
